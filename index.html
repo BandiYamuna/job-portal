@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Study Planet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="loadHomeJobs()">
+
+<!-- 🔵 Navbar -->
+<div class="navbar">
+
+    <div class="logo-section">
+        <img src="logo.png" class="nav-logo">
+        <span class="brand">Study Planet</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+    </div>
+
+</div>
+<!-- 🔵 Hero Section -->
+<div class="hero">
+    <div class="hero-content">
+        <h1>Study Planet 🚀</h1>
+        <p>Latest Jobs | Internships | Career Updates</p>
+        <button onclick="goJobs()">Explore Jobs</button>
+    </div>
+</div>
+
+<!-- 🔵 Latest Jobs -->
+<div class="container">
+    <h2>🔥 Latest Jobs</h2>
+    <div id="homeJobs"></div>
+</div>
+
+<!-- 🔵 Info Section -->
+<div class="container">
+    <h2>🔥 Latest Hiring</h2>
+    <p>Check latest job updates from top companies</p>
+</div>
+
+<script>
+function goJobs() {
+    window.location.href = "jobs.html";
+}
+
+function loadHomeJobs() {
+    fetch("http://localhost:8080/jobs")
+    .then(res => res.json())
+    .then(data => {
+        let list = document.getElementById("homeJobs");
+        list.innerHTML = "";
+
+        data.slice(0, 3).forEach(job => {
+            let div = document.createElement("div");
+            div.className = "job-card";
+
+            div.innerHTML = `
+                <h3>${job.title}</h3>
+                <p><b>${job.company}</b> • ${job.location}</p>
+                <a href="${job.applyLink}" target="_blank">Apply Now</a>
+            `;
+
+            list.appendChild(div);
+        });
+    });
+}
+</script>
+
+</body>
+</html>

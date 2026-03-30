@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Jobs - Study Planet</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo-section">
+        <img th:src="@{/logo.png}" class="nav-logo">
+        <span class="brand">Study Planet</span>
+    </div>
+
+    <div class="nav-links">
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/jobs}">Jobs</a>
+        <a th:href="@{/login}">Login</a>
+        <a th:href="@{/register}">Register</a>
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+</div>
+
+<!-- PAGE TITLE -->
+<div class="container">
+    <h2>💼 All Job Opportunities</h2>
+
+    <div th:each="job : ${jobs}" class="job-card">
+        <h3>
+    <a th:href="@{'/job/' + ${job.id}}" style="text-decoration:none; color:#007bff;">
+        <span th:text="${job.title}"></span>
+    </a>
+</h3>
+
+        <p>
+            <b th:text="${job.company}"></b> • 
+            <span th:text="${job.location}"></span>
+        </p>
+
+       <a th:href="@{/register}">
+    <button>Apply Now</button>
+</a>
+        <br><br>
+
+        <a th:href="@{/register}">
+            <button>🚀 Register to Apply</button>
+        </a>
+    </div>
+</div>
+
+<!-- FLOAT BUTTON -->
+<a th:href="@{/register}" class="fixed-btn">🚀</a>
+
+<!-- FOOTER -->
+<div class="footer">
+    <p>© 2026 Study Planet</p>
+</div>
+
+</body>
+</html>

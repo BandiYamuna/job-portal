@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Study Planet</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo-section">
+        <img th:src="@{/logo.png}" class="nav-logo">
+        <span class="brand">Study Planet</span>
+    </div>
+
+    <div class="nav-links">
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/jobs}">Jobs</a>
+        <a th:href="@{/admin}">Admin</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-content">
+        <h1>Find Your Dream Job 💼</h1>
+        <p>Latest Jobs | Internships | Career Updates</p>
+
+        <a th:href="@{/jobs}">
+            <button class="main-btn">🔍 See Jobs</button>
+        </a>
+
+        <p class="scroll-text">⬇ Scroll down to explore opportunities</p>
+    </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+    <div class="ticker-text">
+        🔥 Infosys Hiring | TCS Walk-in | Wipro Jobs | Tech Mahindra | Freshers Hiring 2026
+    </div>
+</div>
+
+<!-- JOB SECTION -->
+<div class="container">
+    <h2 class="section-title">💼 Latest Jobs</h2>
+
+    <div th:each="job : ${jobs}" class="job-card">
+
+        <div class="job-header">
+            <h3 th:text="${job.title}"></h3>
+            <span class="badge">🔥 Hiring</span>
+        </div>
+
+        <p class="company">
+            <b th:text="${job.company}"></b> • 
+            <span th:text="${job.location}"></span>
+        </p>
+
+        <p class="experience">
+            <b>Experience:</b> 
+            <span th:text="${job.experience}"></span>
+        </p>
+
+        <p class="desc" th:text="${job.description}"></p>
+
+        <div class="job-actions">
+            <a th:href="${job.applyLink}" target="_blank">
+                <button class="apply-btn">🚀 Apply Now</button>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<!-- VIDEO TICKER -->
+<div class="video-ticker">
+    <div class="video-ticker-text">
+        🔥 Latest Videos: Jobs 2026 | Wipro Hiring | TCS Walk-in | Tech Mahindra | Interview Tips
+    </div>
+</div>
+
+<!-- VIDEOS -->
+<div class="container">
+    <h2 class="section-title">🎥 Latest Videos</h2>
+
+    <div class="video-section">
+
+        <div class="video-card">
+            <iframe src="https://www.youtube.com/embed/EOIs7K4g3As" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-card">
+            <iframe src="https://www.youtube.com/embed/ylelUxh12P8" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-card">
+            <iframe src="https://www.youtube.com/embed/hcr4ES-keuE" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-card">
+            <iframe src="https://www.youtube.com/embed/qr5FWfkdzGs" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-card">
+            <iframe src="https://www.youtube.com/embed/PuYiDbVX2u4" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-card">
+            <iframe src="https://www.youtube.com/embed/FONtLbnzO20" allowfullscreen></iframe>
+        </div>
+                <div class="video-card"><iframe src="https://www.youtube.com/embed/_4GoFUKUWxw" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/janqOCiPsws" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/oztp8skHQ4I" allowfullscreen></iframe></div>
+
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/2LtBy0oCliA" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/MXbd9JZC-KM" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/SG0i9hSt2dc" allowfullscreen></iframe></div>
+
+    </div>
+
+
+<!-- CATEGORIES -->
+<div class="container">
+    <h2 class="section-title">📢 More Job Categories</h2>
+
+    <div class="info-grid">
+
+        <div class="info-card">
+            <h3>🏛 Government Jobs</h3>
+            <p>UPSC, SSC, Banking, Railway, Police</p>
+        </div>
+
+        <div class="info-card">
+            <h3>👨‍🔧 Non-IT Jobs</h3>
+            <p>Mechanical, Civil, Electrical, Pharma</p>
+        </div>
+
+        <div class="info-card">
+            <h3>🎓 Exam Updates</h3>
+            <p>ECET, GATE, Placements, Interview Prep</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about-section">
+    <div class="about-content">
+        <h2>🌍 About Study Planet</h2>
+
+        <p class="about-desc">
+            Study Planet is your one-stop platform for job updates, internships,
+            and career guidance. We help students and job seekers find the best
+            opportunities and prepare for their dream careers.
+        </p>
+
+        <div class="about-features">
+            <span class="feature">🚀 Daily Job Updates</span>
+            <span class="feature">🎯 Interview Preparation</span>
+            <span class="feature">📚 Career Guidance</span>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <p>© 2026 Study Planet</p>
+</div>
+
+</body>
+</html>

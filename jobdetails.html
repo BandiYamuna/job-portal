@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="navbar">
+    <h2>Study Planet</h2>
+</div>
+
+<div class="container">
+    <h2 id="title"></h2>
+    <p><b>Company:</b> <span id="company"></span></p>
+    <p><b>Location:</b> <span id="location"></span></p>
+    <p><b>Description:</b></p>
+    <p id="description"></p>
+
+    <a id="applyLink" target="_blank">
+        <button>Apply Now</button>
+    </a>
+</div>
+
+<script>
+let job = JSON.parse(localStorage.getItem("selectedJob"));
+
+if(job) {
+    document.getElementById("title").innerText = job.title;
+    document.getElementById("company").innerText = job.company;
+    document.getElementById("location").innerText = job.location;
+    document.getElementById("description").innerText = job.description;
+    document.getElementById("applyLink").href = job.applyLink;
+}
+</script>
+
+</body>
+</html>

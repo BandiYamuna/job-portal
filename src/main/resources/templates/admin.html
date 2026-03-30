@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <!-- LEFT FORM -->
+    <div class="admin-form">
+
+        <h2>➕ Add Job</h2>
+
+       <form th:action="@{/saveJob}" method="post" th:object="${job}">
+
+    <input type="hidden" th:field="*{id}">
+
+    <input type="text" th:field="*{title}" placeholder="Job Title" required>
+
+    <input type="text" th:field="*{company}" placeholder="Company" required>
+
+    <input type="text" th:field="*{location}" placeholder="Location" required>
+
+    <input type="text" th:field="*{experience}" placeholder="Experience" required>
+
+    <input type="text" th:field="*{applyLink}" placeholder="Apply Link" required>
+
+    <textarea th:field="*{description}" placeholder="Job Description"></textarea>
+
+    <button type="submit">Save Job</button>
+
+</form>
+       
+
+    </div>
+
+    <!-- RIGHT JOB LIST -->
+    <div class="admin-list">
+
+        <h2>📋 All Jobs</h2>
+
+        <div th:each="job : ${jobs}" class="job-card">
+
+            <h3 th:text="${job.title}"></h3>
+
+            <p>
+                <b th:text="${job.company}"></b> • 
+                <span th:text="${job.location}"></span>
+            </p>
+
+            <p>
+                <b>Experience:</b>
+                <span th:text="${job.experience}"></span>
+            </p>
+
+            <p th:text="${job.description}"></p>
+
+            <div class="admin-buttons">
+
+                <a th:href="@{/editJob/{id}(id=${job.id})}">
+                    <button class="edit-btn">✏ Edit</button>
+                </a>
+
+                <a th:href="@{/deleteJob/{id}(id=${job.id})}">
+                    <button class="delete-btn">❌ Delete</button>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

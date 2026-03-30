@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Job Details</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="job-card">
+
+        <h2 th:text="${job.title}"></h2>
+
+        <p>
+            <b th:text="${job.company}"></b> • 
+            <span th:text="${job.location}"></span>
+        </p>
+
+        <p><b>Experience:</b> <span th:text="${job.experience}"></span></p>
+
+        <p><b>Skills:</b> Java, Spring Boot</p>
+
+        <p><b>Description:</b></p>
+        <p>
+            This is a great opportunity for freshers and experienced candidates 
+            to join a top company and grow their career.
+        </p>
+          <p th:text="${job.description}"></p>
+        <!-- ✅ APPLY BUTTON -->
+        <a th:href="${session.loggedInUser != null} ? ${job.applyLink} : @{/login}">
+            <button class="apply-btn">Apply Now</button>
+        </a>
+       
+
+    </div>
+
+</div>
+
+</body>
+</html>
